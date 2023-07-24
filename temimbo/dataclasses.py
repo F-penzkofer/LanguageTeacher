@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import Dict, List
 
 # domain = enum[vocabulary, grammar, text]
+# task types = enum[multiple_choice, single_choice, gap_text, odd_one_out, word_groups, match_title]
 
 
 class Level(BaseModel):
