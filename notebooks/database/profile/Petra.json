@@ -1,0 +1,13 @@
+{
+    "name": "Petra",
+    "level": {
+        "vocabulary_level": 9,
+        "grammar_level": 9,
+        "text_level": 10
+    },
+    "training_goals": {
+        "vocabulary_goals": ["The Metaphysical Nature of Reality"],
+        "grammar_goals": ["To bend the rules at my own will"],
+        "text_goals": ["Be cute"]
+    }
+}

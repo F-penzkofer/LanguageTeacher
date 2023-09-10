@@ -1,0 +1,13 @@
+{
+    "name": "Klaus",
+    "level": {
+        "vocabulary_level": 4,
+        "grammar_level": 4,
+        "text_level": 2
+    },
+    "training_goals": {
+        "vocabulary_goals": ["Cars", "Mars"],
+        "grammar_goals": [],
+        "text_goals": ["Talk about powerful cars"]
+    }
+}

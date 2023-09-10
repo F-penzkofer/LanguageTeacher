@@ -1,5 +1,6 @@
 requests
 openai
+pydantic
 
 # Dev requirements
 python-dotenv

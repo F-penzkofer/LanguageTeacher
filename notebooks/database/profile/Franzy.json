@@ -1,0 +1,13 @@
+{
+    "name": "Franzy",
+    "level": {
+        "vocabulary_level": 5,
+        "grammar_level": 7,
+        "text_level": 3
+    },
+    "training_goals": {
+        "vocabulary_goals": ["Cats and puppies"],
+        "grammar_goals": [],
+        "text_goals": ["Describe delicious things"]
+    }
+}

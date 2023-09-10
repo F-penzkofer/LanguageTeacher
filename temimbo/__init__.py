@@ -13,23 +13,20 @@ def get_random_examples(task_type: str, domain: str, n: int) -> List[str]:
     mapping = {
         'multiple_choice': [
             'Example text ____ with gap\na) answer option 1\nb) answer option 2\nc) answer  option 3\nd) answer  option 4',
-            'Example text ____ with gap\na) answer option 1\nb) answer option 2\nc) answer  option 3\nd) answer  option 4',
-            'Example text ____ with gap\na) answer option 1\nb) answer option 2\nc) answer  option 3\nd) answer  option 4',
+            'Which ',
         ],
         'single_choice': [
             'Example text ____ with gap\na) answer option 1\nb) answer option 2\nc) answer  option 3\nd) answer  option 4',
-            'lalala',
-            'lololo',
+            #'lalala',
+            #'lololo',
         ],
         'gap_text': [
             'Example text ____ with gap',
-            'lalala',
-            'lololo',
         ],
         'odd_one_out': [
-            'odd one out',
-            'lalala',
-            'lololo',
+            'matching word, matching word, non-matching word, matching word',
+            'teach, learn, lecture, show',
+            'switching, learning, read, suffering',
         ],
         'word_groups': [
             'word groups (free text)',
@@ -48,12 +45,12 @@ def get_random_examples(task_type: str, domain: str, n: int) -> List[str]:
 
 def convert_task_type_to_text(task_type: str) -> str:
     mapping = {
-        'multiple_choice': 'multiple choice (4 possible answer choices per task)',
-        'single_choice': 'single choice (4 possible answer choices per task)',
-        'gap_text': 'gap text (free text)',
-        'odd_one_out': 'odd one out',
-        'word_groups': 'word groups (free text)',
-        'match_title': 'match title',
+        'multiple_choice': 'multiple choice (4 possible answer choices per task), there can be multiple correct answers',
+        'single_choice': 'single choice (4 possible answer choices per task), only one answer is correct',
+        'gap_text': 'gap text, without offered answer possibilites',
+        'odd_one_out': 'odd one out, such that 5 words or phrases are provided, where 1 of them does not fit in',
+        'word_groups': 'word groups, such that there are 3 topics/grammatical oders etc and 15 words, such that each group has 5 words each',
+        'match_title': 'a short text, and 4 generated titles, in which 3 do not match text and 1 does',
     }
     if task_type not in mapping:
         raise NotImplementedError(f'Unkown task type {task_type}')
@@ -115,12 +112,13 @@ class TaskGenerator():
         prompt += f"\nGenerate a {convert_task_type_to_text(task_type)} task,"
         prompt += f" in the area of {convert_domain_to_text(domain)} teaching,"
         prompt += f" targeting on {' and '.join(training_goals_subset)}."
+        
         # TODO level
         if sub_domain:
             prompt += f" Specifically, focus on {sub_domain}."
         prompt += "\nDo not provide the correct answers, just the task output. Only one task."
-        prompt += " It should be for academic english learners."
-        prompt += "\nThe following is an example of how the task should be generated."
+        prompt += " It should be for academic english learners. Therefore, the tasks have to train academic english!"
+        prompt += "\nThe following is an example of how the task should be generated. The language level should be C1 or higher"
 
         for example in get_random_examples(task_type, domain, n = 1):
             prompt += f"\n\n{example}"
@@ -175,6 +173,7 @@ class AnswerEvaluator():
         return NL_feedback, correctness, training_goals
     
     async def update_learner_profile(self, training_goals: TrainingGoals, profile: Profile) -> Profile:
+        # TODO: if there are too many goals, kick out the first ones
         new_profile = copy.deepcopy(profile)
         new_profile.training_goals.vocabulary_goals += training_goals.vocabulary_goals
         new_profile.training_goals.grammar_goals += training_goals.grammar_goals
@@ -189,31 +188,72 @@ class AnswerEvaluator():
 #######################################
 # Implementation dependent classes
 #######################################
+import json
 class DatabaseClient():
+    '''
+    Abstract object to interface with a data storage
+    @param connection_string represents the connection information to the database
+    '''
+    connection_string: str
     def __init__(self, connection_string: str):
-        pass
+        self.connection_string = connection_string
 
     async def load_profile(self, id: str) -> Profile:
-        profile = Profile( # This is just a MOCK, for testing
-            name = 'Franzy',
-            level = Level( 
-                vocabulary_level = 5,
-                grammar_level = 7,
-                text_level = 3,
-            ),
-            training_goals = TrainingGoals(
-                vocabulary_goals = ['Foods and drinks'],
-                grammar_goals = [],
-                text_goals = ['Describe delicious things'],
-            )
-        )
+        raise NotImplementedError('This is an abstract method')
+
+    async def save_profile(self, profile: Profile):
+        raise NotImplementedError('This is an abstract method')
+
+    async def save_conversation(self, conversation_id: str, user_answer: str, formatted_text_output: str):
+        raise NotImplementedError('This is an abstract method')
+
+
+
+class DatabaseClientLocalFile(DatabaseClient):
+    '''
+    connection_string is actually just the path to the local folder used for storage
+    not including a trailing /
+    '''
+    async def load_profile(self, id: str) -> Profile:
+        with open(f'{self.connection_string}/profile/{id}.json', 'r') as f:
+            content: str = f.read()
+        profile = Profile(**json.loads(content))
         return profile
 
     async def save_profile(self, profile: Profile):
-        pass
+        content: str = profile.model_dump()
+        with open(f'{self.connection_string}/profile/{id}.json', 'w') as f:
+            f.write(content)
 
     async def save_conversation(self, conversation_id: str, user_answer: str, formatted_text_output: str):
-        pass
+        # TODO: this is probably too symplistic
+        content: str = json.dumps({
+            'conversation_id': conversation_id,
+            'user_answer': user_answer,
+            'formatted_text_output': formatted_text_output,
+        })
+        with open(f'{self.connection_string}/profile/{conversation_id}.json', 'w') as f:
+            f.write(content)
+
+class DatabaseClientMongoDB(DatabaseClient):
+    '''
+    pymongo is a required dependency
+    pip install pymongo
+    '''
+    def __init__(self, connection_string: str):
+        import pymongo
+        self.client = pymongo.MongoClient(connection_string)
+
+    async def load_profile(self, id: str) -> Profile:
+        profile = Profile(**dict(self.client.my_db.profile.find_one({'name': id})))
+        return profile
+
+    async def save_profile(self, profile: Profile):
+        raise NotImplementedError('TODO')
+
+    async def save_conversation(self, conversation_id: str, user_answer: str, formatted_text_output: str):
+        raise NotImplementedError('TODO')
+
 
 class UserInterface():
     async def answer_task(self, formatted_text_output: str) -> str:
@@ -233,7 +273,7 @@ class UserInterface():
         return task_type
     
     async def choose_sub_domain(self) -> str:
-        sub_domain = 'some crayz thing that the professor said'
+        sub_domain = 'some crazy thing that the professor said'
         return sub_domain
 
     async def export_task(self):
