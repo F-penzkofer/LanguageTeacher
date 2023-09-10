@@ -137,8 +137,10 @@ class Formater():
     async def output_task_formatting(self, raw_output_task: str) -> str:
         '''
         Parses the things that comes out of OpenAI
+        The goal of this function is to make the text more "interface-like", telling the user where to click
+        TODO: not really implemented for now
         '''
-        formatted_output_task = 'Hello user, you look pretty today. Now Answer this.\n\n' + raw_output_task
+        formatted_output_task = raw_output_task
         return formatted_output_task
 
     async def learner_answer_formatting(self, user_answer: str) -> str:
@@ -155,9 +157,15 @@ class AnswerEvaluator():
         self.connector_llm = connector_llm
 
     async def generate_prompt(self, domain: str, formatted_output_task: str, formated_user_answer: str, task_type: str, sub_domain: Optional[str] = None) -> str:
-        prompt = "Pretend you are an academic english teacher. You have three tasks:\nEvaluate the following answer of a student to a given task with boolean values."
-        prompt += "\nName the topic the student has to practice more."
-        prompt += "\nGive sensible feedback to the student. Tell them what is wrong, and what they have to practice."
+        prompt = "Pretend you are an academic english teacher. You have three tasks:"
+        prompt += "\n1) Evaluate the following answer of a student to a given task with boolean values, so just 'True' or 'False', nothing else."
+        prompt += "\n2) Name the topic the student has to practice more. Please just use a list of keywords sorted in vocabulary, grammar and text skill"
+        prompt += "\n3) Give sensible feedback to the student. Tell the user directly what is wrong, and what they have to practice."
+
+        #prompt += f"\n###\nThis is an example of answer:"
+        #prompt += f"\n1) lalala"
+        #prompt += f"\n2) lololo"
+
         prompt += f"\n\nThis was the given task:\n{formatted_output_task}"
         prompt += f"\n\nThis was the student's answer: \n{formated_user_answer}"
         return prompt
