@@ -221,8 +221,8 @@ class DatabaseClientLocalFile(DatabaseClient):
         return profile
 
     async def save_profile(self, profile: Profile):
-        content: str = profile.model_dump()
-        with open(f'{self.connection_string}/profile/{id}.json', 'w') as f:
+        content: str = json.dumps(profile.dict())
+        with open(f'{self.connection_string}/profile/{profile.name}.json', 'w') as f:
             f.write(content)
 
     async def save_conversation(self, conversation_id: str, user_answer: str, formatted_text_output: str):

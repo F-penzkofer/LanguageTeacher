@@ -1,6 +1,6 @@
 requests
 openai
-pydantic
+pydantic==1.10.2
 
 # Dev requirements
 python-dotenv
