@@ -2,62 +2,95 @@ from temimbo.dataclasses import *
 
 
 
-
+import random
 
 import copy
 from typing import Tuple, Optional
 
 #####################################
-# TODO move this?
+# Task type helpers
 def get_random_examples(task_type: str, domain: str, n: int) -> List[str]:
     mapping = {
         'multiple_choice': [
-            'Example text ____ with gap\na) answer option 1\nb) answer option 2\nc) answer  option 3\nd) answer  option 4',
-            'Which ',
+            'Select the correct answers:\nI am very happy _____ in India. I really miss being there.\na) to live\nb) to have lived\nc) to be lived\nd) to have living',
+            'Select the correct answers:\nThey did not reach an agreement ______ their differences.\na) because of\nb) due to\nc) even though\nd) besides'
         ],
         'single_choice': [
-            'Example text ____ with gap\na) answer option 1\nb) answer option 2\nc) answer  option 3\nd) answer  option 4',
-            #'lalala',
-            #'lololo',
+            'Select the correct answer:\nHe is working on his computer with his baby next to _____ \na) himself\nb) his\nc) herself\nd) itself',
+            'Select the correct answer:\nShe _____ robbed when she left the chocolate factory.\na) were\nb) did\nc) was\nd) forgot',
         ],
         'gap_text': [
-            'Example text ____ with gap',
+            'For instance, on the planet Earth, man had always assumed that he was more a) _____ than dolphins because he had achieved so much—the wheel, New York, wars and so on—whilst all the dolphins had ever done was muck about in the water having a good b) _____. But c) _____, the dolphins had always believed that they were far more intelligent than man—for precisely the same reasons.',
+            "There will be no foolish wand-waving or silly incantations in this class. As such, I don't expect many of you to a) _____ the subtle science and exact art that is potion-making. b) _____, for those select few who possess the predisposition, I can teach you how to bewitch the mind and ensnare the senses. I can tell you how to bottle fame, brew glory, and even put a stopper in death. Then again, maybe some of you have come to Hogwarts in possession of abilities so c) _____ that you feel confident enough to not pay attention!"
         ],
         'odd_one_out': [
-            'matching word, matching word, non-matching word, matching word',
-            'teach, learn, lecture, show',
+            'hotel, motel, town-house, condominium, classroom',
             'switching, learning, read, suffering',
         ],
         'word_groups': [
-            'word groups (free text)',
-            'lalala',
-            'lololo',
+            'Please match the words to the given topics:\nTopics: outside, learning, music\nlist of words: read, tree, study, song, hike, garden, mathematics, dance, guitar, mountain, vocabulary, concert, calculator, orchestra, river',
+            'Please match the words to the given topics:\nTopics: technology, politics, university\nlist of words: blockchain, legislation, education, campus, smartphone, virtual reality, research, cybersecurity, student, artificial intelligence, democracy, campaign, professor, diplomacy, government',
         ],
         'match_title': [
-            'match title',
-            'lalala',
-            'lololo',
+            'Text: The town is divided into different sections. In some towns these are regular, extending out from the center of the town like spokes on a wheel, while in others, where space is limited, they are more random. The different areas are further divided into compounds called “ile”. These vary in size considerably from single dwellings to up to thirty houses. They tend to be larger in the North. Large areas are devoted to government administrative buildings. Newer developments such as industrial or commercial areas or apartment housing for civil servants tends to be build on the edge of the town.\nTitles: a) city structures\nb) social developments in america\nc) environmental influences\nd) town ownership',
+            "Text: The field of Computer-Assisted Language Learning (CALL) and its subfield of automatic task generation and evaluation have garnered significant attention in recent years. However, an examination of the existing literature reveals a notable gap regarding the incorporation of state-of-the-art machine learning approaches. Specifically, there is a dearth of research exploring the potential of leveraging the newest advancements in machine learning within the context of CALL. Despite the emergence of powerful large language models, such as OpenAI's GPT-3, their utilization in CALL and their application to automatic task generation and evaluation have not received adequate attention. \nTitles: a) Computer assisted language learning\nb) AI in big companys\nc) attention for details\nd) new technologies for teaching in schools",
         ],
+        'text_summary': [
+            "Johannes Gutenberg (1398 - 1468) was a German goldsmith and publisher who introduced printing to Europe. His introduction of mechanical movable type printing to Europe started the Printing Revolution and is widely regarded as the most important event of the modern period. It played a key role in the scientific revolution and laid the basis for the modern knowledge-based economy and the spread of learning to the masses. Gutenberg many contributions to printing are: the invention of a process for mass-producing movable type, the use of oil-based ink for printing books, adjustable molds, and the use of a wooden printing press. His truly epochal invention was the combination of these elements into a practical system that allowed the mass production of printed books and was economically viable for printers and readers alike. In Renaissance Europe, the arrival of mechanical movable type printing introduced the era of mass communication which permanently altered the structure of society. The relatively unrestricted circulation of information—including revolutionary ideas—transcended borders, and captured the masses in the Reformation. The sharp increase in literacy broke the monopoly of the literate elite on education and learning and bolstered the emerging middle class.",
+            "As the purpose of investigating LLS is to foster learning processes and improve language level, research projects often deal with LLS use in relation to language learning proficiency (Khaldieh, 2000; Magogwe and Oliver, 2007; Wu, 2008; Chen, 2009; Liu, 2010; Al-Qahtani, 2013; Platsidou and Kantaridou, 2014; Charoento, 2016; Rao, 2016). The notion of proficiency has been defined and involved in analysis in a multitude of ways by various researchers. Charoento (2016) involved self-ratings, Wu (2008) used the results from language proficiency and achievement tests, Magogwe and Oliver (2007) incorporated language course grades into their analysis of their results. Most studies have shown a positive relationship between LLS and proficiency, but the direction of their connexion was often different. Some researchers have stressed that strategy use was mainly specified by proficiency. More proficient students engaged in LLS more frequently and also employed a broader range of strategies overall compared to less proficient students (Khaldieh, 2000; Wu, 2008; Rao, 2016). Al-Qahtani (2013) and Charoento (2016) demonstrated that successful students mainly used cognitive strategies, while Wu (2008) emphasised significant utilisation of cognitive, metacognitive and social strategies among more proficient university students. Chen (2009) pointed to the use of fewer communication strategies among proficient learners, but noted that they employed them more efficiently than less proficient learners. In addition, Magogwe and Oliver (2007) also established that the basic difference in LLS use between proficient and less proficient learners was that more successful students not only used certain LLS significantly more often, but were also able to select the most adequate strategies depending on the goal of their task."
+        ]
     }
     if task_type not in mapping:
         raise NotImplementedError(f'Unkown task type {task_type}')
-    return mapping[task_type][:n]
+    return random.sample(mapping[task_type], n)
 
 def convert_task_type_to_text(task_type: str) -> str:
     mapping = {
-        'multiple_choice': 'multiple choice (4 possible answer choices per task), there can be multiple correct answers',
-        'single_choice': 'single choice (4 possible answer choices per task), only one answer is correct',
-        'gap_text': 'gap text, without offered answer possibilites',
-        'odd_one_out': 'odd one out, such that 5 words or phrases are provided, where 1 of them does not fit in',
-        'word_groups': 'word groups, such that there are 3 topics/grammatical oders etc and 15 words, such that each group has 5 words each',
-        'match_title': 'a short text, and 4 generated titles, in which 3 do not match text and 1 does',
+        'multiple_choice': 'multiple choice with given answer possibilities, there can be multiple correct answers. Generate only one task with four answer possibilities',
+        'single_choice': 'single choice with given answer possibilities, only one of the answers is correct. Generate only one task with four answer possibilities',
+        'gap_text': 'single gap text with at least 3 gaps (missing words) in it, written with as given in the examples, do not provide answers. Enumerate the gaps with letters. Do not generate anything else but the gap text',
+        'odd_one_out': 'odd one out, such that 5 words or phrases are provided, where 1 of them does not fit in. enumerate the list of options. Do not provide the correct answer, just a list of words and a task description',
+        'word_groups': 'list of 15 words, with 5 each matching up to only one of 3 provided topics/grammatical oders etc. Provide the list in random order, and the 3 topic seperately',
+        'match_title': 'short text, and 4 generated titles, in which 3 do not match text and 1 does',
+        'text_summary': 'short text that the reader has to summarize in 5 to 6 sentences. only give a text of at least 250 words and a task description asking the student to write a summary, do not write a summary yourself.'
     }
     if task_type not in mapping:
         raise NotImplementedError(f'Unkown task type {task_type}')
     return mapping[task_type]
 
+#####################################
+# Domain helpers
 def convert_domain_to_text(domain: str) -> str:
     return domain
+
+#####################################
+# Level helpers
+def convert_level_to_CEFR_name(level: int) -> str:
+    mapping = {
+        0: 'A1',
+        1: 'A2',
+        2: 'B1',
+        3: 'B2',
+        4: 'C1',
+        5: 'C2',
+    }
+    if level not in mapping:
+        raise NotImplementedError(f'Unkown level {level}')
+    return mapping[level]
+
+def convert_level_to_CEFR_description(level: int) -> str:
+    # https://www.coe.int/en/web/common-european-framework-reference-languages/table-1-cefr-3.3-common-reference-levels-global-scale
+    mapping = {
+        0: 'Can understand and use familiar everyday expressions and very basic phrases aimed at the satisfaction of needs of a concrete type. Can introduce him/herself and others and can ask and answer questions about personal details such as where he/she lives, people he/she knows and things he/she has. Can interact in a simple way provided the other person talks slowly and clearly and is prepared to help',
+        1: 'Can understand sentences and frequently used expressions related to areas of most immediate relevance (e.g. very basic personal and family information, shopping, local geography, employment). Can communicate in simple and routine tasks requiring a simple and direct exchange of information on familiar and routine matters.  Can describe in simple terms aspects of his/her background, immediate environment and matters in areas of immediate need',
+        2: 'Can understand the main points of clear standard input on familiar matters regularly encountered in work, school, leisure, etc. Can deal with most situations likely to arise whilst travelling in an area where the language is spoken.  Can produce simple connected text on topics which are familiar or of personal interest. Can describe experiences and events, dreams, hopes & ambitions and briefly give reasons and explanations for opinions and plans',
+        3: 'Can understand the main ideas of complex text on both concrete and abstract topics, including technical discussions in his/her field of specialisation. Can interact with a degree of fluency and spontaneity that makes regular interaction with native speakers quite possible without strain for either party. Can produce clear, detailed text on a wide range of subjects and explain a viewpoint on a topical issue giving the advantages and disadvantages of various options',
+        4: 'Can understand a wide range of demanding, longer texts, and recognise implicit meaning. Can express him/herself fluently and spontaneously without much obvious searching for expressions. Can use language flexibly and effectively for social, academic and professional purposes. Can produce clear, well-structured, detailed text on complex subjects, showing controlled use of organisational patterns, connectors and cohesive devices',
+        5: 'Can understand with ease virtually everything heard or read. Can summarise information from different spoken and written sources, reconstructing arguments and accounts in a coherent presentation. Can express him/herself spontaneously, very fluently and precisely, differentiating finer shades of meaning even in more complex situations',
+    }
+    if level not in mapping:
+        raise NotImplementedError(f'Unkown level {level}')
+    return mapping[level]
 
 ###################################
 import openai
@@ -108,20 +141,39 @@ class TaskGenerator():
         return level, training_goals_subset
 
     async def generate_prompt(self, level: Level, training_goals_subset: List[str], domain: str, task_type: str, sub_domain: Optional[str] = None) -> str:
-        prompt = "Pretend you are a academic english teacher. Generate only the task itself, no other text."
-        prompt += f"\nGenerate a {convert_task_type_to_text(task_type)} task,"
-        prompt += f" in the area of {convert_domain_to_text(domain)} teaching,"
+        prompt = "Pretend you are a academic english teacher. Generate a task description, and the task according to the format of the examples. No other text or tasks."
+        prompt += f"\nGenerate a {convert_task_type_to_text(task_type)}."
+        prompt += f" Generate it for the area of {convert_domain_to_text(domain)} teaching,"
         prompt += f" targeting on {' and '.join(training_goals_subset)}."
         
-        # TODO level
         if sub_domain:
             prompt += f" Specifically, focus on {sub_domain}."
-        prompt += "\nDo not provide the correct answers, just the task output. Only one task."
-        prompt += " It should be for academic english learners. Therefore, the tasks have to train academic english!"
-        prompt += "\nThe following is an example of how the task should be generated. The language level should be C1 or higher"
+        
+        # Level
+        level: int
+        if domain == 'vocabulary':
+            level = level.vocabulary_level
+        elif domain == 'grammar':
+            level = level.grammar_level
+        elif domain == 'text':
+            level = level.text_level
+        else:
+            raise NotImplementedError(f'Unkown domain {domain}')
+        prompt += f'\nAdjust the task dificulty to language level {convert_level_to_CEFR_name(level)} ({convert_level_to_CEFR_description(level)}).'
 
-        for example in get_random_examples(task_type, domain, n = 1):
-            prompt += f"\n\n{example}"
+
+        # Examples
+        n: int
+        if task_type == 'text_summary':
+            n = 0
+        else:
+            n = 2
+
+        if n > 0:
+            prompt += f"\n\nThe following {'are' if n > 1 else 'is'} {n} {'examples' if n > 1 else 'example'} of how the task should be generated with output format and style:"
+            for example in get_random_examples(task_type, domain, n = n):
+                prompt += f"\n\n {example}"
+
         return prompt
     
     async def generate_task(self, prompt: str) -> str:
@@ -157,17 +209,25 @@ class AnswerEvaluator():
         self.connector_llm = connector_llm
 
     async def generate_prompt(self, domain: str, formatted_output_task: str, formated_user_answer: str, task_type: str, sub_domain: Optional[str] = None) -> str:
-        prompt = "Pretend you are an academic english teacher. You have three tasks:"
-        prompt += "\n1) Evaluate the following answer of a student to a given task with boolean values, so just 'True' or 'False', nothing else."
-        prompt += "\n2) Name the topic the student has to practice more. Please just use a list of keywords sorted in vocabulary, grammar and text skill"
-        prompt += "\n3) Give sensible feedback to the student. Tell the user directly what is wrong, and what they have to practice."
+        #prompt = "Pretend you are an academic english teacher. You will get a task and a user's answer to it. The answer can be very short, no explanation necessary. You have three tasks:"
+        #prompt += "\n1) Evaluate the following answer of a student to a given task and output boolean values, so just 'True' or 'False', nothing else."
+        #prompt += "\n2) Name the topic the student has to practice more. If the answer was correct, output ''. Otherwise please just use a list of keywords sorted in vocabulary, grammar and text skill in a python dictionary style."
+        #prompt += "\n3) Give sensible feedback to the student. Tell the user directly what is wrong, and what they have to practice. Tell the user the correct answer. Be encouraging and use the sandwich technique!"
 
         #prompt += f"\n###\nThis is an example of answer:"
         #prompt += f"\n1) lalala"
         #prompt += f"\n2) lololo"
 
+        prompt = "Pretend you are an academic english teacher."
+        prompt += "You have 3 tasks:"
+        prompt += "\n1) Evaluate the learner's answer. Output a boolean value, so just 'True' or 'False', nothing else."
+        prompt += "\n2) Name one topic each that the student has to practice more. Separate them in vocabulary, grammar and text skills. Only provide key words. If the answer was correct, output an empty string."
+        prompt += "\n3) Give sensible feedback. Tell the learner brielfy what is wrong, and what they have to practice. Tell the user the correct answer, directly referring to them with 'you'. Be encouraging!"
+
+
         prompt += f"\n\nThis was the given task:\n{formatted_output_task}"
-        prompt += f"\n\nThis was the student's answer: \n{formated_user_answer}"
+        prompt += f"\n\nThis was the student's answer:  '{formated_user_answer}'\n"
+        prompt += "Please do tasks 1 to 3 now."
         return prompt
 
     async def evaluate_learner_answer(self, prompt: str) -> Tuple[str, bool, TrainingGoals]:
@@ -264,20 +324,20 @@ class DatabaseClientMongoDB(DatabaseClient):
 
 
 class UserInterface():
-    async def answer_task(self, formatted_text_output: str) -> str:
-        answer = 'I choose A'
+    async def answer_task(self, formatted_text_output: str, answer) -> str:
+        answer = answer
         return answer
 
     async def choose_export(self) -> str:
         export_type = 'file'
         return export_type
 
-    async def choose_domain(self) -> str:
-        domain = 'vocabulary'
+    async def choose_domain(self, domain) -> str:
+        domain = domain
         return domain
     
-    async def choose_task_type(self) -> str:
-        task_type = 'single_choice'
+    async def choose_task_type(self, task_type) -> str:
+        task_type = task_type
         return task_type
     
     async def choose_sub_domain(self) -> str:
