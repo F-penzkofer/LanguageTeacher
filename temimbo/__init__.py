@@ -24,8 +24,8 @@ def get_random_examples(task_type: str, domain: str, n: int) -> List[str]:
             "There will be no foolish wand-waving or silly incantations in this class. As such, I don't expect many of you to a) _____ the subtle science and exact art that is potion-making. b) _____, for those select few who possess the predisposition, I can teach you how to bewitch the mind and ensnare the senses. I can tell you how to bottle fame, brew glory, and even put a stopper in death. Then again, maybe some of you have come to Hogwarts in possession of abilities so c) _____ that you feel confident enough to not pay attention!"
         ],
         'odd_one_out': [
-            'hotel, motel, town-house, condominium, classroom',
-            'switching, learning, read, suffering',
+            'a)hotel\nb)motel\nc)town-house\nd)condominium\ne)classroom',
+            'a)switching\nb)learning\nc)read\nd)suffering\ne)watching',
         ],
         'word_groups': [
             'Please match the words to the given topics:\nTopics: outside, learning, music\nlist of words: read, tree, study, song, hike, garden, mathematics, dance, guitar, mountain, vocabulary, concert, calculator, orchestra, river',
@@ -49,7 +49,7 @@ def convert_task_type_to_text(task_type: str) -> str:
         'multiple_choice': 'multiple choice with given answer possibilities, there can be multiple correct answers. Generate only one task with four answer possibilities',
         'single_choice': 'single choice with given answer possibilities, only one of the answers is correct. Generate only one task with four answer possibilities',
         'gap_text': 'single gap text with at least 3 gaps (missing words) in it, written with as given in the examples, do not provide answers. Enumerate the gaps with letters. Do not generate anything else but the gap text',
-        'odd_one_out': 'odd one out, such that 5 words or phrases are provided, where 1 of them does not fit in. enumerate the list of options. Do not provide the correct answer, just a list of words and a task description',
+        'odd_one_out': 'odd one out, provide an enumerated list of 5 words, where one does not fit in. Give only a list of newly generated words according to the topic and a task description. Do not give the correct answer',
         'word_groups': 'list of 15 words, with 5 each matching up to only one of 3 provided topics/grammatical oders etc. Provide the list in random order, and the 3 topic seperately',
         'match_title': 'short text, and 4 generated titles, in which 3 do not match text and 1 does',
         'text_summary': 'short text that the reader has to summarize in 5 to 6 sentences. only give a text of at least 250 words and a task description asking the student to write a summary, do not write a summary yourself.'
@@ -164,7 +164,7 @@ class TaskGenerator():
 
         # Examples
         n: int
-        if task_type == 'text_summary':
+        if (task_type == 'text_summary') or (task_type == 'odd_one_out'):
             n = 0
         else:
             n = 2

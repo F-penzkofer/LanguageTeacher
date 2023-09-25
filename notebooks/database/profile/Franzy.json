@@ -1,13 +1,13 @@
 {
     "name": "Franzy",
     "level": {
-        "vocabulary_level": 5,
+        "vocabulary_level": 3,
         "grammar_level": 4,
-        "text_level": 3
+        "text_level": 5
     },
     "training_goals": {
-        "vocabulary_goals": ["Office jargon"],
-        "grammar_goals": [],
-        "text_goals": ["academic writing skills"]
+        "vocabulary_goals": ["Collpquial Language"],
+        "grammar_goals": ["Modals in the Past"],
+        "text_goals": ["Topic about Films"]
     }
 }
