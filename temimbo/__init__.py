@@ -208,36 +208,46 @@ class AnswerEvaluator():
     def __init__(self, connector_llm: ConnectorLLM):
         self.connector_llm = connector_llm
 
-    async def generate_prompt(self, domain: str, formatted_output_task: str, formated_user_answer: str, task_type: str, sub_domain: Optional[str] = None) -> str:
-        #prompt = "Pretend you are an academic english teacher. You will get a task and a user's answer to it. The answer can be very short, no explanation necessary. You have three tasks:"
-        #prompt += "\n1) Evaluate the following answer of a student to a given task and output boolean values, so just 'True' or 'False', nothing else."
-        #prompt += "\n2) Name the topic the student has to practice more. If the answer was correct, output ''. Otherwise please just use a list of keywords sorted in vocabulary, grammar and text skill in a python dictionary style."
-        #prompt += "\n3) Give sensible feedback to the student. Tell the user directly what is wrong, and what they have to practice. Tell the user the correct answer. Be encouraging and use the sandwich technique!"
+    async def evaluate_learner_answer(self, domain: str, formatted_output_task: str, formated_user_answer: str, task_type: str, sub_domain: Optional[str] = None) -> Tuple[str, bool, TrainingGoals]:
+        base_prompt = "Pretend you are an academic english teacher. You are evaluating the learner's answer."
+        base_prompt += f"\n\nThis was the given task:\n{formatted_output_task}"
+        base_prompt += f"\n\nThis was the student's answer:  '{formated_user_answer}'\n"
+        
+        
+        
+        # Correctness
+        prompt_correctness = base_prompt + "\nEvaluate the learner's answer for correctness. If the learner's answer was correct, output 'correct'. Otherwise output 'wrong'. Output nothing else.\n"
+        prompt_correctness += "\nOutput: "
+        raw_output_correctness = self.connector_llm.text_completion(prompt_correctness)
+        
+        # Training goals
+        prompt_goals = base_prompt + f"\nConsider that the answer is {raw_output_correctness}."
+        prompt_goals = "\nIf the answer is correct: Output 'No training goals'.\nIf the answer is wrong: You have to return training goals. Output at most one topic each that the student has to practice more according to the answer. There are three categories: vocabulary, grammar and text skills. Write max one per category. Only provide key words."
+        prompt_goals += "\nOutput: "
+        raw_output_goals = self.connector_llm.text_completion(prompt_goals)
+        
+        # NL feedback
+        prompt_feedback = base_prompt + f"\nConsider that the answer is {raw_output_correctness}."
+        prompt_feedback += f"Consider that the learner has to practice more about:\n{raw_output_goals}"
+        prompt_feedback += "\nOutput a sensible feedback. If the answer is wrong: Tell the learner brielfy what is wrong, and what they have to practice. Tell the user the correct answer, directly referring to them with 'you'. If the answer is correct, just praise the student. Always be nice and encouraging!"
+        prompt_feedback += "\nOutput: "
+        raw_output_feedback = self.connector_llm.text_completion(prompt_feedback)
 
-        #prompt += f"\n###\nThis is an example of answer:"
-        #prompt += f"\n1) lalala"
-        #prompt += f"\n2) lololo"
-
-        prompt = "Pretend you are an academic english teacher."
-        prompt += "You have 3 tasks:"
-        prompt += "\n1) Evaluate the learner's answer. Output a boolean value, so just 'True' or 'False', nothing else."
-        prompt += "\n2) Name one topic each that the student has to practice more. Separate them in vocabulary, grammar and text skills. Only provide key words. If the answer was correct, output an empty string."
-        prompt += "\n3) Give sensible feedback. Tell the learner brielfy what is wrong, and what they have to practice. Tell the user the correct answer, directly referring to them with 'you'. Be encouraging!"
-
-
-        prompt += f"\n\nThis was the given task:\n{formatted_output_task}"
-        prompt += f"\n\nThis was the student's answer:  '{formated_user_answer}'\n"
-        prompt += "Please do tasks 1 to 3 now."
-        return prompt
-
-    async def evaluate_learner_answer(self, prompt: str) -> Tuple[str, bool, TrainingGoals]:
-        # TODO call opeanai with prompt, parse the 3 variables 
-        NL_feedback = 'Oh my darling, your mistakes are comprehensible, but...'
-        correctness = False
-        training_goals = TrainingGoals(
-            grammar_goals = ["Use of don't", "Simple past, even though pasts are never simple"],
-            vocabulary_goals = ['Cat anatomical parts']
-        )
+        ############################################
+        # parse
+        # TODO: the types are wrong, everything is being returned as string
+        # We should either implement the parsing here, or change the return types to be `Tuple[str, str, str]` as parse them somewhere else
+        
+        correctness = raw_output_correctness
+        #correctness = False
+        training_goals = raw_output_goals
+        #training_goals = TrainingGoals(
+        #    grammar_goals = ["Use of don't", "Simple past, even though pasts are never simple"],
+        #    vocabulary_goals = ['Cat anatomical parts']
+        #)
+        NL_feedback = raw_output_feedback
+        #NL_feedback = 'Oh my darling, your mistakes are comprehensible, but...'
+        
         return NL_feedback, correctness, training_goals
     
     async def update_learner_profile(self, training_goals: TrainingGoals, profile: Profile) -> Profile:
