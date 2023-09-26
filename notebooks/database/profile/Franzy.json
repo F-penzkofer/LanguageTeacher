@@ -6,8 +6,8 @@
         "text_level": 5
     },
     "training_goals": {
-        "vocabulary_goals": ["Collpquial Language"],
-        "grammar_goals": ["Modals in the Past"],
-        "text_goals": ["Topic about Films"]
+        "vocabulary_goals": ["Colloquial Language"],
+        "grammar_goals": ["'Wish / If only regrets'"],
+        "text_goals": ["Books and Literature"]
     }
 }
