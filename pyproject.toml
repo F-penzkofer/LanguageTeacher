@@ -1,0 +1,31 @@
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "temimbo"
+version = "0.1.2"
+description = "Temimbo: A library for Enhanced Personalized Language Learning"
+readme = "README.md"
+authors = [{ name = "Franziska Penzkofer", email = "franziska@lammelhoefl.de" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["language learning", "adaptive learning"]
+dependencies = ["requests>=2.31.0", "openai", "pydantic==1.10.2"]
+requires-python = ">=3.9"
+
+    [project.optional-dependencies]
+    build = ["build", "twine"]
+    dev   = ["python_dotenv"]
+
+    [project.urls]
+    repository    = "https://github.com/F-penzkofer/LanguageTeacher"
+    documentation = "https://github.com/F-penzkofer/LanguageTeacher"
+
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["notebooks"]
