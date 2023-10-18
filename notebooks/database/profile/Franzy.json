@@ -6,8 +6,8 @@
         "text_level": 5
     },
     "training_goals": {
-        "vocabulary_goals": ["Colloquial Language"],
-        "grammar_goals": ["'Wish / If only regrets'"],
-        "text_goals": ["Books and Literature"]
+        "vocabulary_goals": ["personality"],
+        "grammar_goals": ["adverbs"],
+        "text_goals": ["scientific developments"]
     }
 }

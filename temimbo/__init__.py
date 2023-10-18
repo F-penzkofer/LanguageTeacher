@@ -50,8 +50,8 @@ def convert_task_type_to_text(task_type: str) -> str:
         'single_choice': 'single choice with given answer possibilities, only one of the answers is correct. Generate only one task with four answer possibilities',
         'gap_text': 'single gap text with at least 3 gaps (missing words) in it, written with as given in the examples, do not provide answers. Enumerate the gaps with letters. Do not generate anything else but the gap text',
         'odd_one_out': 'odd one out, provide an enumerated list of 5 words, where one does not fit in. Give only a list of newly generated words according to the topic and a task description. Do not give the correct answer',
-        'word_groups': 'list of 15 words, with 5 each matching up to only one of 3 provided topics/grammatical oders etc. Provide the list in random order, and the 3 topic seperately',
-        'match_title': 'short text, and 4 generated titles, in which 3 do not match text and 1 does',
+        'word_groups': 'word groups. There are always three words in the topic, and 5 matching words per topic. Sort the matching words randomly, do not separate them in any way. Do not repeat any words. Remember: always three topic words, 15 matching words in total in one single list',
+        'match_title': 'short text to train only the given target, and 4 generated titles, in which 3 do not match text and 1 does. The task is about matching a title to a given text. Do not generate anything else, only a text and 4 titles',
         'text_summary': 'short text that the reader has to summarize in 5 to 6 sentences. only give a text of at least 250 words and a task description asking the student to write a summary, do not write a summary yourself.'
     }
     if task_type not in mapping:
@@ -222,14 +222,15 @@ class AnswerEvaluator():
         
         # Training goals
         prompt_goals = base_prompt + f"\nConsider that the answer is {raw_output_correctness}."
-        prompt_goals = "\nIf the answer is correct: Output 'No training goals'.\nIf the answer is wrong: You have to return training goals. Output at most one topic each that the student has to practice more according to the answer. There are three categories: vocabulary, grammar and text skills. Write max one per category. Only provide key words."
+        #prompt_goals = "\nIf the answer is correct: Output 'No training goals'.\nIf the answer is wrong: You have to return training goals. Output at most one topic each that the student has to practice more according to the answer. There are three categories: vocabulary, grammar and text skills. Write max one per category. Only provide key words."
+        prompt_goals += "\nThere are three categories for training goals: vocabulary, grammar, text. If the answer is wrong, find key words that describe the training goal according to the mistake the learner made their answer. Put no more than one item per category. If the answer was correct, output 'no training goals'."
         prompt_goals += "\nOutput: "
         raw_output_goals = self.connector_llm.text_completion(prompt_goals)
         
         # NL feedback
         prompt_feedback = base_prompt + f"\nConsider that the answer is {raw_output_correctness}."
         prompt_feedback += f"Consider that the learner has to practice more about:\n{raw_output_goals}"
-        prompt_feedback += "\nOutput a sensible feedback. If the answer is wrong: Tell the learner brielfy what is wrong, and what they have to practice. Tell the user the correct answer, directly referring to them with 'you'. If the answer is correct, just praise the student. Always be nice and encouraging!"
+        prompt_feedback += "\nOutput a sensible feedback. If the answer is wrong: Tell the learner brielfy what is wrong, and what they have to practice. Tell the user the correct answer. If the answer is correct, just praise the student. Always be nice and encouraging!"
         prompt_feedback += "\nOutput: "
         raw_output_feedback = self.connector_llm.text_completion(prompt_feedback)
 
@@ -351,7 +352,7 @@ class UserInterface():
         return task_type
     
     async def choose_sub_domain(self) -> str:
-        sub_domain = 'some crazy thing that the professor said'
+        sub_domain = 'fluent use of written english'
         return sub_domain
 
     async def export_task(self):
