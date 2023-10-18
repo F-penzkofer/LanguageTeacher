@@ -6,9 +6,9 @@ from typing import Dict, List
 
 
 class Level(BaseModel):
-    vocabulary_level: int
-    grammar_level: int
-    text_level: int
+    vocabulary_level: float
+    grammar_level: float
+    text_level: float
 
 class TrainingGoals(BaseModel):
     vocabulary_goals: List[str] = []

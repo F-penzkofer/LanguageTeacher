@@ -5,7 +5,9 @@ from temimbo.dataclasses import *
 import random
 
 import copy
-from typing import Tuple, Optional
+from typing import Tuple, Optional, List
+import re
+
 
 #####################################
 # Task type helpers
@@ -136,6 +138,7 @@ class TaskGenerator():
             raise ValueError(f'Invalid domain: {domain}')
         
         # Reduce
+        #training_goals_subset = random.sample(training_goals_subset, k=3)
         training_goals_subset = training_goals_subset[:2]
 
         return level, training_goals_subset
@@ -152,11 +155,11 @@ class TaskGenerator():
         # Level
         level: int
         if domain == 'vocabulary':
-            level = level.vocabulary_level
+            level = int(level.vocabulary_level)
         elif domain == 'grammar':
-            level = level.grammar_level
+            level = int(level.grammar_level)
         elif domain == 'text':
-            level = level.text_level
+            level = int(level.text_level)
         else:
             raise NotImplementedError(f'Unkown domain {domain}')
         prompt += f'\nAdjust the task dificulty to language level {convert_level_to_CEFR_name(level)} ({convert_level_to_CEFR_description(level)}).'
@@ -239,24 +242,90 @@ class AnswerEvaluator():
         # TODO: the types are wrong, everything is being returned as string
         # We should either implement the parsing here, or change the return types to be `Tuple[str, str, str]` as parse them somewhere else
         
-        correctness = raw_output_correctness
-        #correctness = False
-        training_goals = raw_output_goals
-        #training_goals = TrainingGoals(
-        #    grammar_goals = ["Use of don't", "Simple past, even though pasts are never simple"],
-        #    vocabulary_goals = ['Cat anatomical parts']
-        #)
+        normalized_output_correctness = raw_output_correctness.replace('.', '').replace('!', '').lower()
+        correctness : bool = ('correct' in normalized_output_correctness) or ('right' in normalized_output_correctness)
+
+        ########
+        pattern = r'(?i)vocabulary:\s(.*?)(?:\n|\Z)'
+        matches = re.search(pattern, raw_output_goals)
+        vocab_goals_list: List[str]
+        if matches is not None:
+            vocab_goals_str: str = matches.group(1)
+            vocab_goals_list = [g.strip() for g in vocab_goals_str.split(',')]
+            vocab_goals_list = list(filter(lambda g: 'no training goal' not in g.lower(), vocab_goals_list))
+        else:
+            vocab_goals_list = []
+        #print(vocab_goals_list)
+
+        pattern = r'(?i)grammar:\s(.*?)(?:\n|\Z)'
+        matches = re.search(pattern, raw_output_goals)
+        grammar_goals_list: List[str]
+        if matches is not None:
+            grammar_goals_str: str = matches.group(1)
+            grammar_goals_list = [g.replace('.', '').strip() for g in grammar_goals_str.split(',')]
+            grammar_goals_list = list(filter(lambda g: 'no training goal' not in g.lower(), grammar_goals_list))
+        else:
+            grammar_goals_list = []
+        #print(grammar_goals_list)
+
+        pattern = r'(?i)text:\s(.*?)(?:\n|\Z)'
+        matches = re.search(pattern, raw_output_goals)
+        text_goals_list: List[str]
+        if matches is not None:
+            text_goals_str: str = matches.group(1)
+            text_goals_list = [g.strip() for g in text_goals_str.split(',')]
+            text_goals_list = list(filter(lambda g: 'no training goal' not in g.lower(), text_goals_list))
+        else:
+            text_goals_list = []
+        #print(text_goals_list)
+        training_goals : TrainingGoals = TrainingGoals(
+            vocabulary_goals = vocab_goals_list,
+            grammar_goals = grammar_goals_list,
+            text_goals = text_goals_list,
+        )
+        ########
+
         NL_feedback = raw_output_feedback
-        #NL_feedback = 'Oh my darling, your mistakes are comprehensible, but...'
         
         return NL_feedback, correctness, training_goals
     
-    async def update_learner_profile(self, training_goals: TrainingGoals, profile: Profile) -> Profile:
+    async def update_learner_profile(self, training_goals: TrainingGoals, domain: str, profile: Profile, correctness: bool) -> Profile:
         # TODO: if there are too many goals, kick out the first ones
         new_profile = copy.deepcopy(profile)
         new_profile.training_goals.vocabulary_goals += training_goals.vocabulary_goals
         new_profile.training_goals.grammar_goals += training_goals.grammar_goals
         new_profile.training_goals.text_goals += training_goals.text_goals
+
+        random.shuffle(new_profile.training_goals.vocabulary_goals)
+        random.shuffle(new_profile.training_goals.grammar_goals)
+        random.shuffle(new_profile.training_goals.text_goals)
+
+        if correctness == True:
+            score = 0.1
+        else:
+            score = -0.1
+        
+        if domain == 'vocabulary':
+            new_profile.level.vocabulary_level += score
+            if new_profile.level.vocabulary_level > 5.9:
+                new_profile.level.vocabulary_level = 5.9
+            if new_profile.level.vocabulary_level < 0:
+                new_profile.level.vocabulary_level = 0.0
+        elif domain == 'grammar':
+            new_profile.level.grammar_level += score
+            if new_profile.level.grammar_level > 5.9:
+                new_profile.level.grammar_level = 5.9
+            if new_profile.level.grammar_level < 0:
+                new_profile.level.grammar_level = 0.0
+        elif domain == 'text':
+            new_profile.level.text_level += score
+            if new_profile.level.text_level > 5.9:
+                new_profile.level.text_level = 5.9
+            if new_profile.level.text_level < 0:
+                new_profile.level.text_level = 0.0
+        else:
+            raise ValueError(f'Invalid domain: {domain}')
+            
         return new_profile
 
 

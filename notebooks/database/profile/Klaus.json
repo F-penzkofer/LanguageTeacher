@@ -1,9 +1,9 @@
 {
     "name": "Klaus",
     "level": {
-        "vocabulary_level": 4,
-        "grammar_level": 4,
-        "text_level": 2
+        "vocabulary_level": 4.1,
+        "grammar_level": 4.0,
+        "text_level": 2.1
     },
     "training_goals": {
         "vocabulary_goals": ["Cars", "Mars"],

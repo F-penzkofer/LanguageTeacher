@@ -1,9 +1,9 @@
 {
     "name": "Franzy",
     "level": {
-        "vocabulary_level": 5,
-        "grammar_level": 7,
-        "text_level": 3
+        "vocabulary_level": 5.5,
+        "grammar_level": 7.9,
+        "text_level": 3.0
     },
     "training_goals": {
         "vocabulary_goals": ["Cats and puppies"],

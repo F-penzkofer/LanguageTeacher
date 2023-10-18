@@ -1,13 +1,1 @@
-{
-    "name": "Franzy",
-    "level": {
-        "vocabulary_level": 3,
-        "grammar_level": 4,
-        "text_level": 5
-    },
-    "training_goals": {
-        "vocabulary_goals": ["personality"],
-        "grammar_goals": ["adverbs"],
-        "text_goals": ["scientific developments"]
-    }
-}
+{"name": "Franzy", "level": {"vocabulary_level": 5.5, "grammar_level": 7.9, "text_level": 2.9}, "training_goals": {"vocabulary_goals": ["Cats and puppies", "mango"], "grammar_goals": ["adjective agreement (ripe)"], "text_goals": ["Describe delicious things", "understanding of the question"]}}
