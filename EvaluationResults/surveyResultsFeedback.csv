@@ -1,0 +1,101 @@
+task type;feedback ID;Correctness;Criterium;Total number of answers;1 (p);2 (p);3 (p);4 (p);5 (p);1 (n);2 (n);3 (n);4 (n);5 (n)
+Gap Text;FeedbackGT1.1;yes;Actionable and constructive feedback;15;6,7;6,7;6,7;20;60;1;1;1;3;9
+Gap Text;FeedbackGT1.2;yes;Meaningful vocabulary keywords;13;0;15,4;15,4;30,8;38,5;0;2;2;4;5
+Gap Text;FeedbackGT1.3;yes;Meaningful grammar keywords;12;0;8,3;8,3;41,7;41,7;0;1;1;5;5
+Gap Text;FeedbackGT1.4;yes;Meaningful text skill keywords;13;0;7,7;15,4;38,5;38,5;0;1;2;5;5
+Gap Text;FeedbackGT1.5;yes;Correct feedback;14;0;14,3;0;28,6;57,1;0;2;0;4;8
+Gap Text;FeedbackGT2.1;no;Actionable and constructive feedback;12;8,3;0;8,3;33,3;50;1;0;1;4;6
+Gap Text;FeedbackGT2.2;no;Meaningful vocabulary keywords;11;9,1;0;9,1;45,5;36,4;1;0;1;5;4
+Gap Text;FeedbackGT2.3;no;Meaningful grammar keywords;12;16,7;0;8,3;33,3;41,7;2;0;1;4;5
+Gap Text;FeedbackGT2.4;no;Meaningful text skill keywords;11;9,1;0;18,2;36,4;36,4;1;0;2;4;4
+Gap Text;FeedbackGT2.5;no;Correct feedback;12;8,3;16,7;16,7;25;33,3;1;2;2;3;4
+Gap Text;FeedbackGT3.1;yes;Actionable and constructive feedback;15;0;26,7;0;20;53,3;0;4;0;3;8
+Gap Text;FeedbackGT3.2;yes;Meaningful vocabulary keywords;12;0;8,3;25;33,3;33,3;0;1;3;4;4
+Gap Text;FeedbackGT3.3;yes;Meaningful grammar keywords;12;0;25;16,7;25;33,3;0;3;2;3;4
+Gap Text;FeedbackGT3.4;yes;Meaningful text skill keywords;12;0;8,3;41,7;25;25;0;1;5;3;3
+Gap Text;FeedbackGT3.5;yes;Correct feedback;13;15,4;7,7;7,7;23,1;46,2;2;1;1;3;6
+Gap Text;FeedbackGT4.1;no;Actionable and constructive feedback;14;7,1;0;7,1;35,7;50;1;0;1;5;7
+Gap Text;FeedbackGT4.2;no;Meaningful vocabulary keywords;14;0;14,3;0;35,7;50;0;2;0;5;7
+Gap Text;FeedbackGT4.3;no;Meaningful grammar keywords;12;8,3;8,3;0;33,3;50;1;1;0;4;6
+Gap Text;FeedbackGT4.4;no;Meaningful text skill keywords;12;8,3;0;8,3;33,3;50;1;0;1;4;6
+Gap Text;FeedbackGT4.5;no;Correct feedback;13;0;0;15,4;23,1;61,5;0;0;2;3;8
+Match the title;FeedbackMT1.1;yes;Actionable and constructive feedback;15;0;0;33,3;20;46,7;0;0;5;3;7
+Match the title;FeedbackMT1.2;yes;Meaningful vocabulary keywords;13;0;7,7;30,8;30,8;30,8;0;1;4;4;4
+Match the title;FeedbackMT1.3;yes;Meaningful grammar keywords;12;0;8,3;25;33,3;33,3;0;1;3;4;4
+Match the title;FeedbackMT1.4;yes;Meaningful text skill keywords;13;7,7;0;30,8;23,1;38,5;1;0;4;3;5
+Match the title;FeedbackMT1.5;yes;Correct feedback;15;0;0;33,3;13,3;53,3;0;0;5;2;8
+Match the title;FeedbackMT2.1;no;Actionable and constructive feedback;14;7,1;0;21,4;7,1;64,3;1;0;3;1;9
+Match the title;FeedbackMT2.2;no;Meaningful vocabulary keywords;14;0;7,1;28,6;28,6;35,7;0;1;4;4;5
+Match the title;FeedbackMT2.3;no;Meaningful grammar keywords;15;0;6,7;20;26,7;46,7;0;1;3;4;7
+Match the title;FeedbackMT2.4;no;Meaningful text skill keywords;13;0;0;30,8;15,4;53,8;0;0;4;2;7
+Match the title;FeedbackMT2.5;no;Correct feedback;13;0;0;30,8;7,7;61,5;0;0;4;1;8
+Match the title;FeedbackMT3.1;no;Actionable and constructive feedback;15;0;20;26,7;13,3;40;0;3;4;2;6
+Match the title;FeedbackMT3.2;no;Meaningful vocabulary keywords;13;15,4;7,7;15,4;38,5;23,1;2;1;2;5;3
+Match the title;FeedbackMT3.3;no;Meaningful grammar keywords;13;7,7;7,7;15,4;38,5;30,8;1;1;2;5;4
+Match the title;FeedbackMT3.4;no;Meaningful text skill keywords;13;7,7;7,7;15,4;38,5;30,8;1;1;2;5;4
+Match the title;FeedbackMT3.5;no;Correct feedback;15;0;13,3;13,3;20;53,3;0;2;2;3;8
+Match the title;FeedbackMT4.1;yes;Actionable and constructive feedback;15;0;6,7;20;13,3;60;0;1;3;2;9
+Match the title;FeedbackMT4.2;yes;Meaningful vocabulary keywords;14;0;28,6;7,1;28,6;35,7;0;4;1;4;5
+Match the title;FeedbackMT4.3;yes;Meaningful grammar keywords;12;8,3;25;8,3;16,7;41,7;1;3;1;2;5
+Match the title;FeedbackMT4.4;yes;Meaningful text skill keywords;14;0;14,3;7,1;35,7;42,9;0;2;1;5;6
+Match the title;FeedbackMT4.5;yes;Correct feedback;13;0;7,7;23,1;23,1;46,2;0;1;3;3;6
+Odd one out;FeedbackOO1.1;no;Actionable and constructive feedback;15;20;6,7;0;20;53,3;3;1;0;3;8
+Odd one out;FeedbackOO1.2;no;Meaningful vocabulary keywords;13;7,7;23,1;7,7;15,4;46,2;1;3;1;2;6
+Odd one out;FeedbackOO1.3;no;Meaningful grammar keywords;13;7,7;15,4;7,7;30,8;38,5;1;2;1;4;5
+Odd one out;FeedbackOO1.4;no;Meaningful text skill keywords;13;7,7;15,4;15,4;15,4;46,2;1;2;2;2;6
+Odd one out;FeedbackOO1.5;no;Correct feedback;14;14,3;14,3;7,1;7,1;57,1;2;2;1;1;8
+Odd one out;FeedbackOO2.1;yes;Actionable and constructive feedback;15;13,3;0;20;26,7;40;2;0;3;4;6
+Odd one out;FeedbackOO2.2;yes;Meaningful vocabulary keywords;13;15,4;7,7;23,1;30,8;23,1;2;1;3;4;3
+Odd one out;FeedbackOO2.3;yes;Meaningful grammar keywords;13;7,7;7,7;30,8;38,5;15,4;1;1;4;5;2
+Odd one out;FeedbackOO2.4;yes;Meaningful text skill keywords;13;7,7;23,1;15,4;30,8;23,1;1;3;2;4;3
+Odd one out;FeedbackOO2.5;yes;Correct feedback;14;7,1;0;42,9;14,3;35,7;1;0;6;2;5
+Odd one out;FeedbackOO3.1;no;Actionable and constructive feedback;15;0;6,7;26,7;26,7;40;0;1;4;4;6
+Odd one out;FeedbackOO3.2;no;Meaningful vocabulary keywords;15;0;6,7;13,3;46,7;33,3;0;1;2;7;5
+Odd one out;FeedbackOO3.3;no;Meaningful grammar keywords;13;0;15,4;23,1;38,5;23,1;0;2;3;5;3
+Odd one out;feedbackOO3.4;no;Meaningful text skill keywords;12;0;8,3;25;41,7;25;0;1;3;5;3
+Odd one out;FeedbackOO3.5;no;Correct feedback;14;7,1;7,1;14,3;35,7;35,7;1;1;2;5;5
+Odd one out;FeedbackOO4.1;yes;Actionable and constructive feedback;14;7,1;0;14,3;21,4;57,1;1;0;2;3;8
+Odd one out;FeedbackOO4.2;yes;Meaningful vocabulary keywords;14;7,1;14,3;14,3;21,4;42,9;1;2;2;3;6
+Odd one out;FeedbackOO4.3;yes;Meaningful grammar keywords;12;8,3;8,3;16,7;25;41,7;1;1;2;3;5
+Odd one out;FeedbackOO4.4;yes;Meaningful text skill keywords;12;8,3;16,7;16,7;25;33,3;1;2;2;3;4
+Odd one out;FeedbackOO4.5;yes;Correct feedback;13;15,4;0;7,7;23,1;53,8;2;0;1;3;7
+Single Choice;FeedbackSC1.1;yes;Actionable and constructive feedback;14;7,1;7,1;7,1;35,7;42,9;1;1;1;5;6
+Single Choice;FeedbackSC1.2;yes;Meaningful vocabulary keywords;13;0;7,7;15,4;38,5;38,5;0;1;2;5;5
+Single Choice;FeedbackSC1.3;yes;Meaningful grammar keywords;13;0;0;30,8;30,8;38,5;0;0;4;4;5
+Single Choice;FeedbackSC1.4;yes;Meaningful text skill keywords;13;15,4;0;15,4;30,8;38,5;2;0;2;4;5
+Single Choice;FeedbackSC1.5;yes;Correct feedback;12;8,3;8,3;16,7;25;41,7;1;1;2;3;5
+Single Choice;FeedbackSC2.1;no;Actionable and constructive feedback;13;7,7;0;0;46,2;46,2;1;0;0;6;6
+Single Choice;FeedbackSC2.2;no;Meaningful vocabulary keywords;12;8,3;8,3;0;41,7;41,7;1;1;0;5;5
+Single Choice;FeedbackSC2.3;no;Meaningful grammar keywords;13;7,7;0;7,7;38,5;46,2;1;0;1;5;6
+Single Choice;FeedbackSC2.4;no;Meaningful text skill keywords;11;0;9,1;0;45,5;45,5;0;1;0;5;5
+Single Choice;FeedbackSC2.5;no;Correct feedback;13;23,1;0;0;30,8;46,2;3;0;0;4;6
+Single Choice;FeedbackSC3.1;no;Actionable and constructive feedback;13;0;0;7,7;23,1;69,2;0;0;1;3;9
+Single Choice;FeedbackSC3.2;no;Meaningful vocabulary keywords;13;0;15,4;0;30,8;53,8;0;2;0;4;7
+Single Choice;FeedbackSC3.3;no;Meaningful grammar keywords;12;8,3;0;0;41,7;50;1;0;0;5;6
+Single Choice;FeedbackSC3.4;no;Meaningful text skill keywords;11;9,1;0;9,1;27,3;54,5;1;0;1;3;6
+Single Choice;FeedbackSC3.5;no;Correct feedback;13;7,7;0;0;23,1;69,2;1;0;0;3;9
+Single Choice;FeedbackSC4.1;yes;Actionable and constructive feedback;12;0;8,3;8,3;16,7;66,7;0;1;1;2;8
+Single Choice;FeedbackSC4.2;yes;Meaningful vocabulary keywords;11;9,1;0;18,2;18,2;54,5;1;0;2;2;6
+Single Choice;FeedbackSC4.3;yes;Meaningful grammar keywords;11;18,2;0;9,1;27,3;45,5;2;0;1;3;5
+Single Choice;FeedbackSC4.4;yes;Meaningful text skill keywords;11;9,1;0;18,2;27,3;45,5;1;0;2;3;5
+Single Choice;FeedbackSC4.5;yes;Correct feedback;13;15,4;23,1;0;23,1;38,5;2;3;0;3;5
+Text summary;FeedbackTS1.1;good answer;Actionable and constructive feedback;14;0;7,1;14,3;14,3;64,3;0;1;2;2;9
+Text summary;FeedbackTS1.2;good answer;Meaningful vocabulary keywords;14;14,3;7,1;14;28,6;35,7;2;1;2;4;5
+Text summary;FeedbackTS1.3;good answer;Meaningful grammar keywords;13;0;7,7;15,4;38,5;38,5;0;1;2;5;5
+Text summary;FeedbackTS1.4;good answer;Meaningful text skill keywords;14;0;7,1;7,1;28,6;57,1;0;1;1;4;8
+Text summary;FeedbackTS1.5;good answer;Correct feedback;15;0;13,3;13,3;20;53,3;0;2;2;3;8
+Text summary;FeedbackTS2.1;good answer;Actionable and constructive feedback;15;6,7;6,7;13,3;20;53,3;1;1;2;3;8
+Text summary;FeedbackTS2.2;good answer;Meaningful vocabulary keywords;12;0;8,3;8,3;50;33,3;0;1;1;6;4
+Text summary;FeedbackTS2.3;good answer;Meaningful grammar keywords;13;0;7,7;7,7;46,2;38,5;0;1;1;6;5
+Text summary;FeedbackTS2.4;good answer;Meaningful text skill keywords;14;0;14,3;7,1;42,9;35,7;0;2;1;6;5
+Text summary;FeedbackTS2.5;good answer;Correct feedback;15;0;6,7;20;20;53,3;0;1;3;3;8
+Text summary;FeedbackTS3.1;bad answer;Actionable and constructive feedback;15;6,7;6,7;13,3;26,7;46,7;1;1;2;4;7
+Text summary;FeedbackTS3.2;bad answer;Meaningful vocabulary keywords;14;7,1;14,3;0;28,6;50;1;2;0;4;7
+Text summary;FeedbackTS3.3;bad answer;Meaningful grammar keywords;14;7,1;7,1;0;35,7;50;1;1;0;5;7
+Text summary;FeedbackTS3.4;bad answer;Meaningful text skill keywords;14;14,3;7,1;0;35,7;42,9;2;1;0;5;6
+Text summary;FeedbackTS3.5;bad answer;Correct feedback;15;13,3;0;13,3;20;53,3;2;0;2;3;8
+Text summary;FeedbackTS4.1;bad answer;Actionable and constructive feedback;14;7,1;0;35,7;21,4;35,7;1;0;5;3;5
+Text summary;FeedbackTS4.2;bad answer;Meaningful vocabulary keywords;13;0;0;15,4;46,2;38,5;0;0;2;6;5
+Text summary;FeedbackTS4.3;bad answer;Meaningful grammar keywords;13;0;0;30,8;30,8;38,5;0;0;4;4;5
+Text summary;FeedbackTS4.4;bad answer;Meaningful text skill keywords;13;0;0;15,4;38,5;46,2;0;0;2;5;6
+Text summary;FeedbackTS4.5;bad answer;Correct feedback;13;0;7,7;38,5;15,4;38,5;0;1;5;2;5

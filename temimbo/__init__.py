@@ -1,11 +1,14 @@
 from temimbo.dataclasses import *
 
 import random
+import json
 
 import copy
 from typing import Tuple, Optional, List
 import re
 import openai
+
+import pymongo
 
 #####################################
 # Task type examples
@@ -124,7 +127,7 @@ class ConnectorOpenAI(ConnectorLLM):
 class TaskGenerator():
     '''
     Holds the connection credentails
-    Known how to talk to OpenAI using their APIs    
+    Knows how to talk to OpenAI using their APIs    
     '''
     def __init__(self, connector_llm: ConnectorLLM):
         self.connector_llm = connector_llm
@@ -343,7 +346,6 @@ class AnswerEvaluator():
 #######################################
 # Implementation dependent classes
 #######################################
-import json
 class DatabaseClient():
     '''
     Abstract object to interface with a data storage
@@ -397,7 +399,6 @@ class DatabaseClientMongoDB(DatabaseClient):
     pip install pymongo
     '''
     def __init__(self, connection_string: str):
-        import pymongo
         self.client = pymongo.MongoClient(connection_string)
 
     async def load_profile(self, id: str) -> Profile:
@@ -433,5 +434,4 @@ class UserInterface():
         return sub_domain
 
     async def export_task(self):
-        #TODO
         pass

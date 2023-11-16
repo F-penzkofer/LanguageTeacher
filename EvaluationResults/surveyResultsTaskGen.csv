@@ -1,0 +1,151 @@
+task type;task ID;Language Level;Criterium;Task Domain;Training Goal;Total number of answers;strongly disagree;disagree;neutral;agree;strongly agree;s. disagree (n);disagree (n);neutral (n);agree (n);s. sgree (n)
+Gap Text;TaskGT1.1;A1;Clear wording;Grammar;Possessive adjectives;15;13,3;6,7;20;33,3;26,7;2;1;3;5;4
+Gap Text;TaskGT1.2;A1;Good formatting;Grammar;Possessive adjectives;15;6,7;6,7;13,3;40;33,3;1;1;2;6;5
+Gap Text;TaskGT1.3;A1;Topic coverage;Grammar;Possessive adjectives;15;0;13,3;26,7;40;20;0;2;4;6;3
+Gap Text;TaskGT1.4;A1;Language level;Grammar;Possessive adjectives;15;0;0;20;46,7;33,3;0;0;3;7;5
+Gap Text;TaskGT1.5;A1;Correct answer possible;Grammar;Possessive adjectives;15;0;7,1;7,1;57,1;28,6;0;1;1;8;4
+Gap Text;TaskGT2.1;A2;Clear wording;Text;Holidays;14;7,1;7,1;35,7;35,7;14,3;1;1;5;5;2
+Gap Text;TaskGT2.2;A2;Good formatting;Text;Holidays;14;0;14,3;21,4;50;14,3;0;2;3;7;2
+Gap Text;TaskGT2.3;A2;Topic coverage;Text;Holidays;14;0;7,1;14,3;64,3;14,3;0;1;2;9;2
+Gap Text;TaskGT2.4;A2;Language level;Text;Holidays;14;0;21,4;7,1;50;21,4;0;3;1;7;3
+Gap Text;TaskGT2.5;A2;Correct answer possible;Text;Holidays;14;7,1;35,7;14,3;35,7;7,1;1;5;2;5;1
+Gap Text;TaskGT3.1;B1;Clear wording;Vocabulary;Travel and services;14;7,1;21,4;21,4;28,6;21,4;1;3;3;4;3
+Gap Text;TaskGT3.2;B1;Good formatting;Vocabulary;Travel and services;14;7,7;23,1;30,8;15,4;23,1;1;3;4;2;3
+Gap Text;TaskGT3.3;B1;Topic coverage;Vocabulary;Travel and services;14;0;7,1;35,7;28,6;28,6;0;1;5;4;4
+Gap Text;TaskGT3.4;B1;Language level;Vocabulary;Travel and services;14;8,3;0;41,7;33,3;16,7;1;0;5;4;2
+Gap Text;TaskGT3.5;B1;Correct answer possible;Vocabulary;Travel and services;14;7,1;35,7;14,3;21,4;21,4;1;5;2;3;3
+Gap Text;TaskGT4.1;B2;Clear wording;Grammar;Modals (can't have, needn't have);15;6,7;26,7;6,7;53,3;6,7;1;4;1;8;1
+Gap Text;TaskGT4.2;B2;Good formatting;Grammar;Modals (can't have, needn't have);15;0;40;20;33,3;6,7;0;3;3;5;1
+Gap Text;TaskGT4.3;B2;Topic coverage;Grammar;Modals (can't have, needn't have);15;0;20;13,3;60;6,7;0;2;2;9;1
+Gap Text;TaskGT4.4;B2;Language level;Grammar;Modals (can't have, needn't have);15;6,7;13,3;6,7;60;13,3;1;1;1;9;2
+Gap Text;TaskGT4.5;B2;Correct answer possible;Grammar;Modals (can't have, needn't have);15;13,3;26,7;13,3;40;6,7;2;2;2;6;1
+Gap Text;TaskGT5.1;C1;Clear wording;Text;Art;14;7,1;28,6;14,3;35,7;14,3;1;4;2;5;2
+Gap Text;TaskGT5.2;C1;Good formatting;Text;Art;14;0;35,7;14,3;42,9;7,1;0;5;2;6;1
+Gap Text;TaskGT5.3;C1;Topic coverage;Text;Art;14;0;28,6;7,1;50;14,3;0;4;1;7;2
+Gap Text;TaskGT5.4;C1;Language level;Text;Art;14;0;7,1;21,4;57,1;14,3;0;1;3;8;2
+Gap Text;TaskGT5.5;C1;Correct answer possible;Text;Art;14;7,1;43,9;14,3;21,4;14,3;1;6;2;3;2
+Gap Text;TaskGT6.1;C2;Clear wording;Vocabulary;Formal and informal registers;14;7,1;42,9;14,3;35,7;0;1;6;2;5;0
+Gap Text;TaskGT6.2;C2;Good formatting;Vocabulary;Formal and informal registers;14;14,3;42,9;21,4;21,4;0;2;6;3;3;0
+Gap Text;TaskGT6.3;C2;Topic coverage;Vocabulary;Formal and informal registers;14;7,1;28,6;7,1;42,9;14,3;1;4;1;6;2
+Gap Text;TaskGT6.4;C2;Language level;Vocabulary;Formal and informal registers;14;0;7,1;28,6;50;14,3;0;1;4;7;2
+Gap Text;TaskGT6.5;C2;Correct answer possible;Vocabulary;Formal and informal registers;14;14,3;28,6;42,9;14,3;0;2;4;6;2;0
+Match the title;TaskMT1.1;A1;Clear wording;Grammar;Present continuous;14;14,3;21,4;14,3;42,9;7,1;2;3;2;6;1
+Match the title;TaskMT1.2;A1;Good formatting;Grammar;Present continuous;14;7,1;28,6;28,6;28,6;7,1;1;4;4;4;1
+Match the title;TaskMT1.3;A1;Topic coverage;Grammar;Present continuous;14;7,1;14,3;28,6;50;0;1;2;4;7;0
+Match the title;TaskMT1.4;A1;Language level;Grammar;Present continuous;14;14,3;21,4;28,6;35,7;0;2;3;4;5;0
+Match the title;TaskMT1.5;A1;Correct answer possible;Grammar;Present continuous;14;7,1;21,4;14,3;50;7,1;1;3;2;7;1
+Match the title;TaskMT2.1;A2;Clear wording;Text;Shopping;13;7,7;23,1;15,4;46;7,7;1;3;2;6;1
+Match the title;TaskMT2.2;A2;Good formatting;Text;Shopping;13;0;30,8;15,4;46,2;7,7;0;4;2;6;1
+Match the title;TaskMT2.3;A2;Topic coverage;Text;Shopping;13;0;15,4;15,4;53,8;15,4;0;2;2;7;2
+Match the title;TaskMT2.4;A2;Language level;Text;Shopping;13;7,7;7,7;38,5;38,5;7,7;1;1;5;5;1
+Match the title;TaskMT2.5;A2;Correct answer possible;Text;Shopping;13;7,7;23,1;15,4;38,5;15,4;1;3;2;5;2
+Match the title;TaskMT3.1;B1;Clear wording;Vocabulary;Collocation;14;7,1;7,1;21,4;57,1;7,1;1;1;3;8;1
+Match the title;TaskMT3.2;B1;Good formatting;Vocabulary;Collocation;14;7,1;14,3;41,4;50;7,1;1;2;3;7;1
+Match the title;TaskMT3.3;B1;Topic coverage;Vocabulary;Collocation;14;7,1;14,3;24,3;57,1;7,1;1;2;2;8;1
+Match the title;TaskMT3.4;B1;Language level;Vocabulary;Collocation;14;0;7,1;21,4;64,3;7,1;0;1;3;9;1
+Match the title;TaskMT3.5;B1;Correct answer possible;Vocabulary;Collocation;14;0;7,7;15,4;69,2;7,7;0;1;2;9;1
+Match the title;TaskMT4.1;B2;Clear wording;Grammar;Reported speech;14;0;50;7,1;28,6;14,3;0;7;1;4;2
+Match the title;TaskMT4.2;B2;Good formatting;Grammar;Reported speech;14;0;28,6;21,4;35,7;14,3;0;4;3;5;2
+Match the title;TaskMT4.3;B2;Topic coverage;Grammar;Reported speech;14;0;30,8;23,1;28,5;7,7;0;4;3;5;1
+Match the title;TaskMT4.4;B2;Language level;Grammar;Reported speech;14;0;14,3;35,7;42,9;7,1;0;2;5;6;1
+Match the title;TaskMT4.5;B2;Correct answer possible;Grammar;Reported speech;14;0;28,6;28,6;35,7;7,1;0;4;4;5;1
+Match the title;TaskMT5.1;C1;Clear wording;Text;Technical and legal language;13;7,7;23,1;23,1;38,5;7,7;1;3;3;5;1
+Match the title;TaskMT5.2;C1;Good formatting;Text;Technical and legal language;13;0;25,4;23,1;61,5;0;0;2;3;8;0
+Match the title;TaskMT5.3;C1;Topic coverage;Text;Technical and legal language;13;0;25,4;23,1;61,5;0;0;2;3;8;0
+Match the title;TaskMT5.4;C1;Language level;Text;Technical and legal language;13;7,7;7,7;15,4;69,2;0;1;1;2;9;0
+Match the title;TaskMT5.5;C1;Correct answer possible;Text;Technical and legal language;13;0;23,1;23,1;53,8;0;0;3;3;7;0
+Match the title;TaskMT6.1;C2;Clear wording;Vocabulary;Differentiated use of vocabulary;14;7,1;7,1;14,3;57,1;14,3;1;1;2;8;2
+Match the title;TaskMT6.2;C2;Good formatting;Vocabulary;Differentiated use of vocabulary;14;0;7,7;23,1;61,5;7,7;0;1;3;8;1
+Match the title;TaskMT6.3;C2;Topic coverage;Vocabulary;Differentiated use of vocabulary;14;0;14,4;28,6;50;7,1;0;2;4;7;1
+Match the title;TaskMT6.4;C2;Language level;Vocabulary;Differentiated use of vocabulary;14;7,1;7,1;21,4;50;14,3;1;1;3;7;2
+Match the title;TaskMT6.5;C2;Correct answer possible;Vocabulary;Differentiated use of vocabulary;14;0;14,3;42,9;35,7;7,1;0;2;6;5;1
+Odd one out;TaskOO1.1;A1;Clear wording;Vocabulary;Food and drink;15;6,7;13,3;26,7;33,3;20;1;2;4;5;3
+Odd one out;TaskOO1.2;A1;Good formatting;Vocabulary;Food and drink;15;0;6,7;26,7;46,7;20;0;1;4;7;3
+Odd one out;TaskOO1.3;A1;Topic coverage;Vocabulary;Food and drink;15;26,7;33,3;13,3;13,3;23,3;4;5;2;2;2
+Odd one out;TaskOO1.4;A1;Language level;Vocabulary;Food and drink;15;20;20;26,7;26,7;13,3;3;3;3;4;2
+Odd one out;TaskOO1.5;A1;Correct answer possible;Vocabulary;Food and drink;15;6,7;13,3;40;40;13,3;1;2;4;6;2
+Odd one out;TaskOO2.1;A2;Clear wording;Grammar;Adjectives (comparative, use of than and definitie article);14;15,4;30,8;7,7;38,5;7,7;2;4;1;5;1
+Odd one out;TaskOO2.2;A2;Good formatting;Grammar;Adjectives (comparative, use of than and definitie article);14;0;35,7;14,3;50;0;0;5;2;7;0
+Odd one out;TaskOO2.3;A2;Topic coverage;Grammar;Adjectives (comparative, use of than and definitie article);14;7,1;14,3;21,4;50;7,1;1;2;3;7;1
+Odd one out;TaskOO2.4;A2;Language level;Grammar;Adjectives (comparative, use of than and definitie article);14;7,7;15,4;15,4;46,2;15,4;1;2;2;6;2
+Odd one out;TaskOO2.5;A2;Correct answer possible;Grammar;Adjectives (comparative, use of than and definitie article);14;23,1;15,4;15,4;46,2;0;3;2;2;6;0
+Odd one out;TaskOO3.1;B1;Clear wording;Text;News, lifestyles and current affairs;14;0;0;21,4;71,4;7,1;0;0;3;10;1
+Odd one out;TaskOO3.2;B1;Good formatting;Text;News, lifestyles and current affairs;14;7,1;0;28,6;64,3;0;1;0;4;9;0
+Odd one out;TaskOO3.3;B1;Topic coverage;Text;News, lifestyles and current affairs;14;7,1;7,1;21,4;57,1;7,1;1;1;3;8;1
+Odd one out;TaskOO3.4;B1;Language level;Text;News, lifestyles and current affairs;14;0;0;23,1;76,9;0;0;0;3;10;0
+Odd one out;TaskOO3.5;B1;Correct answer possible;Text;News, lifestyles and current affairs;14;0;14,3;21,4;57,1;7,1;0;2;3;8;1
+Odd one out;TaskOO4.1;B2;Clear wording;Vocabulary;Colloquial language;14;0;7,1;21,4;50;21,4;0;1;3;7;3
+Odd one out;TaskOO4.2;B2;Good formatting;Vocabulary;Colloquial language;14;0;15,4;30,8;46,2;7,7;0;2;4;6;1
+Odd one out;TaskOO4.3;B2;Topic coverage;Vocabulary;Colloquial language;14;0;7,1;21,4;64,3;7,1;0;1;3;9;1
+Odd one out;TaskOO4.4;B2;Language level;Vocabulary;Colloquial language;14;0;28,6;14,3;50;7,1;0;4;2;7;1
+Odd one out;TaskOO4.5;B2;Correct answer possible;Vocabulary;Colloquial language;14;0;14,3;42,9;42,9;0;0;2;6;6;0
+Odd one out;TaskOO5.1;C1;Clear wording;Grammar;Modals in the past;14;7,1;14,3;7,1;64,3;7,1;1;2;1;9;1
+Odd one out;TaskOO5.2;C1;Good formatting;Grammar;Modals in the past;14;0;0;35,7;57,1;7,1;0;0;5;8;1
+Odd one out;TaskOO5.3;C1;Topic coverage;Grammar;Modals in the past;14;7,1;7,1;14,3;57,1;14,3;1;1;2;8;2
+Odd one out;TaskOO5.4;C1;Language level;Grammar;Modals in the past;14;0;0;21,4;64,3;14,3;0;0;3;9;2
+Odd one out;TaskOO5.5;C1;Correct answer possible;Grammar;Modals in the past;14;0;7,1;28,6;57,1;7,1;0;1;4;8;1
+Odd one out;TaskOO6.1;C2;Clear wording;Text;Film;15;7,1;21,4;7,1;50;14,3;1;3;1;7;2
+Odd one out;TaskOO6.2;C2;Good formatting;Text;Film;15;0;13,3;33,3;40;13,3;0;2;5;6;2
+Odd one out;TaskOO6.3;C2;Topic coverage;Text;Film;15;0;20;26,7;46,7;6,7;0;3;4;7;1
+Odd one out;TaskOO6.4;C2;Language level;Text;Film;15;13,3;40;20;20;6,7;2;6;3;3;1
+Odd one out;TaskOO6.5;C2;Correct answer possible;Text;Film;15;0;33,3;26,7;40;0;0;5;4;6;0
+Single choice;TaskSC1.1;A1;Clear wording;Text;Leasure activities;15;0;6,7;6,7;33,3;53,3;0;1;1;5;8
+Single choice;TaskSC1.2;A1;Good formatting;Text;Leasure activities;15;0;13,3;20;26,7;40;0;2;3;4;6
+Single choice;TaskSC1.3;A1;Topic coverage;Text;Leasure activities;15;13,3;13,3;26,7;20;26,7;2;2;4;3;4
+Single choice;TaskSC1.4;A1;Language level;Text;Leasure activities;15;13,3;6,7;20;26,7;33,3;2;1;3;4;5
+Single choice;TaskSC1.5;A1;Correct answer possible;Text;Leasure activities;15;6,7;6,7;0;40;46,7;1;1;0;6;7
+Single choice;TaskSC2.1;A2;Clear wording;Vocabulary;Food and drink;15;26,7;13,3;0;33,3;26,7;4;2;0;5;4
+Single choice;TaskSC2.2;A2;Good formatting;Vocabulary;Food and drink;15;20;6,7;13,3;53,3;6,7;3;1;2;8;1
+Single choice;TaskSC2.3;A2;Topic coverage;Vocabulary;Food and drink;15;14,3;7,1;28,6;35,7;14,3;2;1;4;5;2
+Single choice;TaskSC2.4;A2;Language level;Vocabulary;Food and drink;15;20;20;20;33,3;6,7;3;3;3;5;1
+Single choice;TaskSC2.5;A2;Correct answer possible;Vocabulary;Food and drink;15;46,7;26,7;26,7;6,7;0;7;4;3;1;0
+Single choice;TaskSC3.1;B1;Clear wording;Grammar;Past perfect;15;13,3;0;6,7;20;60;2;0;1;3;9
+Single choice;TaskSC3.2;B1;Good formatting;Grammar;Past perfect;15;15,4;0;15,4;15,4;53,8;2;0;2;2;7
+Single choice;TaskSC3.3;B1;Topic coverage;Grammar;Past perfect;15;7,1;7,1;7,1;28,6;50;1;1;1;4;7
+Single choice;TaskSC3.4;B1;Language level;Grammar;Past perfect;15;7,1;7,1;14,3;50;21,4;1;1;2;7;3
+Single choice;TaskSC3.5;B1;Correct answer possible;Grammar;Past perfect;15;14,3;0;14,3;35,7;35,7;2;0;2;5;5
+Single Choice;TaskSC4.1;B2;Clear wording;Text;Books and literature;14;7,1;0;50;50;35,7;1;0;1;7;5
+Single Choice;TaskSC4.2;B2;Good formatting;Text;Books and literature;14;0;7,1;35,7;35,7;42,9;0;1;2;5;6
+Single Choice;TaskSC4.3;B2;Topic coverage;Text;Books and literature;14;7,1;0;35,7;35,7;35,7;1;0;3;5;5
+Single Choice;TaskSC4.4;B2;Language level;Text;Books and literature;14;0;21,4;57,1;57,1;14,3;0;3;1;8;2
+Single Choice;TaskSC4.5;B2;Correct answer possible;Text;Books and literature;14;0;28,6;50;50;21,4;0;4;0;7;3
+Single Choice;TaskSC5.1;C1;Clear wording;Vocabulary;Idiomatic expressions;15;13;20;13,3;33,3;20;2;3;2;5;3
+Single Choice;TaskSC5.2;C1;Good formatting;Vocabulary;Idiomatic expressions;15;20;13,3;13,3;33,3;20;3;2;2;5;3
+Single Choice;TaskSC5.3;C1;Topic coverage;Vocabulary;Idiomatic expressions;15;0;0;21,4;57,1;21,4;0;0;3;8;3
+Single Choice;TaskSC5.4;C1;Language level;Vocabulary;Idiomatic expressions;15;0;6,7;20;40;33,3;0;1;3;6;5
+Single Choice;TaskSC5.5;C1;Correct answer possible;Vocabulary;Idiomatic expressions;15;33,3;6,7;20;33,4;6,7;5;1;3;5;1
+Single Choice;TaskSC6.1;C2;Clear wording;Grammar;Futures;15;6,7;6,7;6,7;40;40;1;1;1;6;6
+Single Choice;TaskSC6.2;C2;Good formatting;Grammar;Futures;15;13,3;0;13,3;40;33,3;2;0;2;6;5
+Single Choice;TaskSC6.3;C2;Topic coverage;Grammar;Futures;15;6,7;0;20;40;33,3;1;0;3;6;5
+Single Choice;TaskSC6.4;C2;Language level;Grammar;Futures;15;20;6,7;20;26,7;26,7;3;1;3;4;4
+Single Choice;TaskSC6.5;C2;Correct answer possible;Grammar;Futures;15;6,7;6,7;6,7;33,3;26,7;1;1;1;5;7
+Text Summary;TaskTS1.1;A1;Clear wording;Vocabulary;Things in the town, shops and shopping;15;6,7;6,7;13,3;60;13,3;1;1;2;9;2
+Text Summary;TaskTS1.2;A1;Good formatting;Vocabulary;Things in the town, shops and shopping;15;6,7;0;26,7;46,7;20;1;0;4;7;3
+Text Summary;TaskTS1.3;A1;Topic coverage;Vocabulary;Things in the town, shops and shopping;15;0;0;6,7;80;13,3;0;0;1;12;2
+Text Summary;TaskTS1.4;A1;Language level;Vocabulary;Things in the town, shops and shopping;15;13,3;20;26,7;33,3;6,7;2;3;4;5;1
+Text Summary;TaskTS1.5;A1;Correct answer possible;Vocabulary;Things in the town, shops and shopping;15;6,7;13,3;26,7;40;13,3;1;2;4;6;2
+Text Summary;TaskTS2.1;A2;Clear wording;Grammar;Imperative;15;6,7;13,3;13,3;53,3;13,3;1;2;2;8;2
+Text Summary;TaskTS2.2;A2;Good formatting;Grammar;Imperative;15;6,7;6,7;33,3;46,7;6,7;1;1;5;7;1
+Text Summary;TaskTS2.3;A2;Topic coverage;Grammar;Imperative;15;6,7;6,7;26,7;53,3;6,7;1;1;4;8;1
+Text Summary;TaskTS2.4;A2;Language level;Grammar;Imperative;15;13,3;20;33,3;26,7;6,7;2;3;5;4;1
+Text Summary;TaskTS2.5;A2;Correct answer possible;Grammar;Imperative;15;6,7;20;20;46,7;6,7;1;3;3;7;1
+Text Summary;TaskTS3.1;B1;Clear wording;Text;Media;14;0;15,4;30,8;46,2;7,7;0;2;4;6;1
+Text Summary;TaskTS3.2;B1;Good formatting;Text;Media;14;0;14,3;21,4;57,1;7,1;0;2;3;8;1
+Text Summary;TaskTS3.3;B1;Topic coverage;Text;Media;14;0;7,1;14,3;71,4;7,1;0;1;2;10;1
+Text Summary;TaskTS3.4;B1;Language level;Text;Media;14;0;21,4;14,3;57,1;7,1;0;3;2;8;1
+Text Summary;TaskTS3.5;B1;Correct answer possible;Text;Media;14;7,6;14,3;21,4;42,9;14,3;1;2;3;6;2
+Text Summary;TaskTS4.1;B2;Clear wording;Vocabulary;Colloquial language;15;0;6,7;26,7;46,7;20;0;1;4;7;3
+Text Summary;TaskTS4.1;B2;Good formatting;Vocabulary;Colloquial language;15;0;6,7;40;40;13,3;0;1;6;6;2
+Text Summary;TaskTS4.1;B2;Topic coverage;Vocabulary;Colloquial language;15;13,3;0;13,3;60;13,3;2;0;2;9;2
+Text Summary;TaskTS4.1;B2;Language level;Vocabulary;Colloquial language;15;6,7;6,7;20;53,3;13,3;1;1;3;8;2
+Text Summary;TaskTS4.1;B2;Correct answer possible;Vocabulary;Colloquial language;15;0;6,7;26,7;53,3;13,3;0;1;4;8;2
+Text Summary;TaskTS5.1;C1;Clear wording;Grammar;Wish / if only regrets;14;0;28,6;14,3;50;7,1;0;4;2;7;1
+Text Summary;TaskTS5.2;C1;Good formatting;Grammar;Wish / if only regrets;14;0;35,7;14,3;42,9;7,1;0;5;2;6;1
+Text Summary;TaskTS5.3;C1;Topic coverage;Grammar;Wish / if only regrets;14;0;7,1;28,6;57,1;7,1;0;1;4;8;1
+Text Summary;TaskTS5.4;C1;Language level;Grammar;Wish / if only regrets;14;14,3;14,3;14,3;42,9;14,3;2;2;2;6;2
+Text Summary;TaskTS5.5;C1;Correct answer possible;Grammar;Wish / if only regrets;14;7,1;35,7;14,3;35,7;7,1;1;5;2;5;1
+Text Summary;TaskTS6.1;C2;Clear wording;Text;Books and literature;13;0;23,1;15,4;53,8;7,7;0;3;2;7;1
+Text Summary;TaskTS6.2;C2;Good formatting;Text;Books and literature;13;7,7;38,5;15,4;30,8;7,7;1;5;2;4;1
+Text Summary;TaskTS6.3;C2;Topic coverage;Text;Books and literature;13;7,7;7,7;15,4;61,5;7,7;1;1;2;8;1
+Text Summary;TaskTS6.4;C2;Language level;Text;Books and literature;13;0;23,1;23,1;46,2;7,7;0;3;3;6;1
+Text Summary;TaskTS6.5;C2;Correct answer possible;Text;Books and literature;13;7,7;15,4;30,8;38,5;7,7;1;2;4;5;1
