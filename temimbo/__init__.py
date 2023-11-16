@@ -1,16 +1,14 @@
 from temimbo.dataclasses import *
 
-
-
 import random
 
 import copy
 from typing import Tuple, Optional, List
 import re
-
+import openai
 
 #####################################
-# Task type helpers
+# Task type examples
 def get_random_examples(task_type: str, domain: str, n: int) -> List[str]:
     mapping = {
         'multiple_choice': [
@@ -42,10 +40,12 @@ def get_random_examples(task_type: str, domain: str, n: int) -> List[str]:
             "As the purpose of investigating LLS is to foster learning processes and improve language level, research projects often deal with LLS use in relation to language learning proficiency (Khaldieh, 2000; Magogwe and Oliver, 2007; Wu, 2008; Chen, 2009; Liu, 2010; Al-Qahtani, 2013; Platsidou and Kantaridou, 2014; Charoento, 2016; Rao, 2016). The notion of proficiency has been defined and involved in analysis in a multitude of ways by various researchers. Charoento (2016) involved self-ratings, Wu (2008) used the results from language proficiency and achievement tests, Magogwe and Oliver (2007) incorporated language course grades into their analysis of their results. Most studies have shown a positive relationship between LLS and proficiency, but the direction of their connexion was often different. Some researchers have stressed that strategy use was mainly specified by proficiency. More proficient students engaged in LLS more frequently and also employed a broader range of strategies overall compared to less proficient students (Khaldieh, 2000; Wu, 2008; Rao, 2016). Al-Qahtani (2013) and Charoento (2016) demonstrated that successful students mainly used cognitive strategies, while Wu (2008) emphasised significant utilisation of cognitive, metacognitive and social strategies among more proficient university students. Chen (2009) pointed to the use of fewer communication strategies among proficient learners, but noted that they employed them more efficiently than less proficient learners. In addition, Magogwe and Oliver (2007) also established that the basic difference in LLS use between proficient and less proficient learners was that more successful students not only used certain LLS significantly more often, but were also able to select the most adequate strategies depending on the goal of their task."
         ]
     }
+    # if a task type that does not exist is tried to be called, raise an error
     if task_type not in mapping:
         raise NotImplementedError(f'Unkown task type {task_type}')
     return random.sample(mapping[task_type], n)
 
+# Task Type definitions
 def convert_task_type_to_text(task_type: str) -> str:
     mapping = {
         'multiple_choice': 'multiple choice with given answer possibilities, there can be multiple correct answers. Generate only one task with four answer possibilities',
@@ -56,6 +56,7 @@ def convert_task_type_to_text(task_type: str) -> str:
         'match_title': 'short text to train only the given target, and 4 generated titles, in which 3 do not match text and 1 does. The task is about matching a title to a given text. Do not generate anything else, only a text and 4 titles',
         'text_summary': 'short text that the reader has to summarize in 5 to 6 sentences. only give a text of at least 250 words and a task description asking the student to write a summary, do not write a summary yourself.'
     }
+    # if a task type that does not exist is tried to be calles, raise an error
     if task_type not in mapping:
         raise NotImplementedError(f'Unkown task type {task_type}')
     return mapping[task_type]
@@ -76,10 +77,12 @@ def convert_level_to_CEFR_name(level: int) -> str:
         4: 'C1',
         5: 'C2',
     }
+    # if a language level that does not exist is tried to be calles, rais an error
     if level not in mapping:
         raise NotImplementedError(f'Unkown level {level}')
     return mapping[level]
 
+# description of language levels
 def convert_level_to_CEFR_description(level: int) -> str:
     # https://www.coe.int/en/web/common-european-framework-reference-languages/table-1-cefr-3.3-common-reference-levels-global-scale
     mapping = {
@@ -90,13 +93,13 @@ def convert_level_to_CEFR_description(level: int) -> str:
         4: 'Can understand a wide range of demanding, longer texts, and recognise implicit meaning. Can express him/herself fluently and spontaneously without much obvious searching for expressions. Can use language flexibly and effectively for social, academic and professional purposes. Can produce clear, well-structured, detailed text on complex subjects, showing controlled use of organisational patterns, connectors and cohesive devices',
         5: 'Can understand with ease virtually everything heard or read. Can summarise information from different spoken and written sources, reconstructing arguments and accounts in a coherent presentation. Can express him/herself spontaneously, very fluently and precisely, differentiating finer shades of meaning even in more complex situations',
     }
+    #if a language level that does not exist is tried to be calles, rais an error
     if level not in mapping:
         raise NotImplementedError(f'Unkown level {level}')
     return mapping[level]
 
 ###################################
-import openai
-
+# class for open ai api
 class ConnectorLLM():
     pass
 
@@ -113,9 +116,11 @@ class ConnectorOpenAI(ConnectorLLM):
                 {"role": "system", "content": prompt},
             ]
         )
+        # returns only the relevant message content from the response
         return response['choices'][0]['message']['content']
 
 ###################################
+# Class for Task Generation
 class TaskGenerator():
     '''
     Holds the connection credentails
@@ -137,12 +142,15 @@ class TaskGenerator():
         else:
             raise ValueError(f'Invalid domain: {domain}')
         
-        # Reduce
+        # Random example choice:
         #training_goals_subset = random.sample(training_goals_subset, k=3)
+
+        # Choose the first two examples of task types
         training_goals_subset = training_goals_subset[:2]
 
         return level, training_goals_subset
 
+    # Generate prompt for task generation
     async def generate_prompt(self, level: Level, training_goals_subset: List[str], domain: str, task_type: str, sub_domain: Optional[str] = None) -> str:
         prompt = "Pretend you are a academic english teacher. Generate a task description, and the task according to the format of the examples. No other text or tasks."
         prompt += f"\nGenerate a {convert_task_type_to_text(task_type)}."
@@ -152,7 +160,7 @@ class TaskGenerator():
         if sub_domain:
             prompt += f" Specifically, focus on {sub_domain}."
         
-        # Level
+        # Get language level according to domain
         level: int
         if domain == 'vocabulary':
             level = int(level.vocabulary_level)
@@ -179,10 +187,11 @@ class TaskGenerator():
 
         return prompt
     
+    # Task generation
     async def generate_task(self, prompt: str) -> str:
         '''
         Returns the raw API output
-        It's the role of the Formatter to find out how to parse this shit
+        The Formatter parses it
         '''
         raw_output_task = self.connector_llm.text_completion(prompt)
         return raw_output_task
@@ -191,9 +200,8 @@ class TaskGenerator():
 class Formater():
     async def output_task_formatting(self, raw_output_task: str) -> str:
         '''
-        Parses the things that comes out of OpenAI
+        Parses the raw output of the OpenAI call
         The goal of this function is to make the text more "interface-like", telling the user where to click
-        TODO: not really implemented for now
         '''
         formatted_output_task = raw_output_task
         return formatted_output_task
@@ -201,12 +209,10 @@ class Formater():
     async def learner_answer_formatting(self, user_answer: str) -> str:
         return user_answer
 
-    # learners answer formatting
-    # output task formatting
-
+# For Task Answer Evaluation
 class AnswerEvaluator():
     # Holds the connection credentails
-    # Known how to talk to OpenAI using their APIs
+    # Knows how to talk to OpenAI using their APIs
 
     def __init__(self, connector_llm: ConnectorLLM):
         self.connector_llm = connector_llm
@@ -238,14 +244,14 @@ class AnswerEvaluator():
         raw_output_feedback = self.connector_llm.text_completion(prompt_feedback)
 
         ############################################
-        # parse
-        # TODO: the types are wrong, everything is being returned as string
-        # We should either implement the parsing here, or change the return types to be `Tuple[str, str, str]` as parse them somewhere else
-        
+
+        # parsing of the response
         normalized_output_correctness = raw_output_correctness.replace('.', '').replace('!', '').lower()
         correctness : bool = ('correct' in normalized_output_correctness) or ('right' in normalized_output_correctness)
 
         ########
+        # check for 'no training goal' responses
+
         pattern = r'(?i)vocabulary:\s(.*?)(?:\n|\Z)'
         matches = re.search(pattern, raw_output_goals)
         vocab_goals_list: List[str]
@@ -255,7 +261,6 @@ class AnswerEvaluator():
             vocab_goals_list = list(filter(lambda g: 'no training goal' not in g.lower(), vocab_goals_list))
         else:
             vocab_goals_list = []
-        #print(vocab_goals_list)
 
         pattern = r'(?i)grammar:\s(.*?)(?:\n|\Z)'
         matches = re.search(pattern, raw_output_goals)
@@ -289,8 +294,8 @@ class AnswerEvaluator():
         
         return NL_feedback, correctness, training_goals
     
+    # updating the language levels and training goals in the learner profile
     async def update_learner_profile(self, training_goals: TrainingGoals, domain: str, profile: Profile, correctness: bool) -> Profile:
-        # TODO: if there are too many goals, kick out the first ones
         new_profile = copy.deepcopy(profile)
         new_profile.training_goals.vocabulary_goals += training_goals.vocabulary_goals
         new_profile.training_goals.grammar_goals += training_goals.grammar_goals
@@ -300,11 +305,13 @@ class AnswerEvaluator():
         random.shuffle(new_profile.training_goals.grammar_goals)
         random.shuffle(new_profile.training_goals.text_goals)
 
+        # discount system
         if correctness == True:
             score = 0.1
         else:
             score = -0.1
         
+        # dont allow negative language levels / language levels outside of the CEFR system
         if domain == 'vocabulary':
             new_profile.level.vocabulary_level += score
             if new_profile.level.vocabulary_level > 5.9:
@@ -356,7 +363,7 @@ class DatabaseClient():
         raise NotImplementedError('This is an abstract method')
 
 
-
+# Local data base in json format
 class DatabaseClientLocalFile(DatabaseClient):
     '''
     connection_string is actually just the path to the local folder used for storage
@@ -383,6 +390,7 @@ class DatabaseClientLocalFile(DatabaseClient):
         with open(f'{self.connection_string}/profile/{conversation_id}.json', 'w') as f:
             f.write(content)
 
+# Connector base to Azure Database MongoDB
 class DatabaseClientMongoDB(DatabaseClient):
     '''
     pymongo is a required dependency
@@ -402,7 +410,7 @@ class DatabaseClientMongoDB(DatabaseClient):
     async def save_conversation(self, conversation_id: str, user_answer: str, formatted_text_output: str):
         raise NotImplementedError('TODO')
 
-
+# For future interface development
 class UserInterface():
     async def answer_task(self, formatted_text_output: str, answer) -> str:
         answer = answer
